@@ -18,7 +18,6 @@ import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
 import { mockLessons, Lesson, LessonPassingCriteria } from '../mock-lessons';
 import {
-  CheckCircleOutlined,
   CloseCircleOutlined,
   ClockCircleOutlined,
   TrophyOutlined,
@@ -31,6 +30,22 @@ import {
 import { useDisableDeleteKeys } from '@/shared/hooks/use-disable-delete-keys';
 
 const { Title, Text } = Typography;
+
+const renderCriteriaResult = (
+  passed: boolean,
+  value: number,
+  required: number,
+  label: string,
+  suffix: string = ''
+) => (
+  <List.Item>
+    <Text type={passed ? 'success' : 'danger'}>
+      {label}: {value}
+      {suffix} (Required: {required}
+      {suffix})
+    </Text>
+  </List.Item>
+);
 
 interface LessonStats {
   wpm: number;
@@ -94,7 +109,7 @@ export default function LessonPracticePage() {
   });
   const [isStarted, setIsStarted] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const timerRef = useRef<NodeJS.Timeout>();
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
   const handleKeyDown = useDisableDeleteKeys();
 
   const lesson = mockLessons.find((l: Lesson) => l.id === params.id);
@@ -109,7 +124,6 @@ export default function LessonPracticePage() {
 
           // Update stats with new time
           setStats((prevStats) => {
-            const timeInSeconds = newTimeElapsed / 1000;
             const criteriaResults = checkPassingCriteria(
               {
                 ...prevStats,
