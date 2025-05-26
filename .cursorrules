@@ -1,0 +1,35 @@
+# .cursorrule Instructions (Markdown Version)
+
+This document outlines the Cursor AI coding behavior rules for the **Typing Speed Game MVP (Frontend-Only)**.
+
+## Overview
+
+- **Framework:** Next.js (React)
+- **UI Libraries:** Ant Design + Tailwind CSS
+- **State Management:** React Context or Zustand
+- **Data Persistence:** LocalStorage (No Backend)
+- **Deployment:** Vercel / Netlify
+
+## Cursor AI Behavior Rules
+
+1. You are working on a frontend-only MVP of a Typing Speed Game.
+2. Use **Next.js** as the React framework.
+3. Use **Ant Design** for UI components and **Tailwind CSS** for layout/styling.
+4. Do **not** build or call any backend APIs.
+5. Use **mock data** (JSON or JS objects) and **LocalStorage** for persistence.
+6. Simulate authentication using fake user objects.
+7. Implement:
+   - Daily Typing Challenge
+   - Typing Lessons (from static JSON)
+   - Typing Feedback (WPM, accuracy, errors)
+8. Show user progress and scores in a profile screen.
+9. Include a **mocked leaderboard** with hardcoded users.
+10. Include a **ChatWithBot** or **Typing Assistant** that gives smart suggestions based on typing data.
+11. Include a **Free vs Pro** toggle to unlock Pro-only features (like advanced lessons or bot help).
+12. Use Zustand, Context API, or simple React state.
+13. All logic should run fully in-browser (no Firebase, Node.js, or backend logic).
+14. Ensure all code works with **Vercel** or static hosting out of the box.
+
+---
+
+**Filename to use in Cursor:** `.cursorrule` (but this is a markdown version for documentation)
